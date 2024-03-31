@@ -5,22 +5,22 @@ const { query } = require("./data.js");
 
 app.use(express.json());
 
-app.post("/api/books", async (req, res) => {
+app.post("/api20083341/books", async (req, res) => {
   const { title, author } = req.body;
   console.info(`Adding book with title ${title} by author ${author}`);
 
   const result = await query(
-    "INSERT INTO tblbook (title, author) VALUES ($1, $2) RETURNING id",
+    "INSERT INTO tblbookIUH20083341 (title, author) VALUES ($1, $2) RETURNING id",
     [title, author]
   );
 
   res.json({ id: result[0].id });
 });
 
-app.get("/api/books", async (req, res) => {
+app.get("/api20083341/books", async (req, res) => {
   console.info(`Getting all books`);
 
-  const books = await query("SELECT * FROM tblbook");
+  const books = await query("SELECT * FROM tblbookIUH20083341");
   res.json(books);
 });
 
